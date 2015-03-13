@@ -54,7 +54,7 @@ $this->title = 'Users';
 				'filter' => false,
 				'contentOptions'=>['style'=>'text-align:center; width:150px;'],
 			 ],
-             'name',
+             'nama',
 			 [
 				'attribute'=>'angkatan',
 				'contentOptions'=>['style'=>'width: 30px; text-align:center;'],

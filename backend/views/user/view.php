@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 
-$this->title = $model->name;
+$this->title = $model->nama;
 ?>
 <section class="content-header">
 	<h1>

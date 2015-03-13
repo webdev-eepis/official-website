@@ -30978,3 +30978,176 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1425223007.403
     'REQUEST_TIME' => 1425223007
 ]
+2015-03-13 19:51:55 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::name' in D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\db\BaseActiveRecord.php(247): yii\base\Component->__get('name')
+#1 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\helpers\BaseArrayHelper.php(190): yii\db\BaseActiveRecord->__get('name')
+#2 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\DataColumn.php(193): yii\helpers\BaseArrayHelper::getValue(Object(common\models\User), 'name')
+#3 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\DataColumn.php(204): yii\grid\DataColumn->getDataCellValue(Object(common\models\User), '142504703221101...', 0)
+#4 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\Column.php(108): yii\grid\DataColumn->renderDataCellContent(Object(common\models\User), '142504703221101...', 0)
+#5 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\GridView.php(455): yii\grid\Column->renderDataCell(Object(common\models\User), '142504703221101...', 0)
+#6 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\GridView.php(424): yii\grid\GridView->renderTableRow(Object(common\models\User), '142504703221101...', 0)
+#7 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\GridView.php(295): yii\grid\GridView->renderTableBody()
+#8 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\widgets\BaseListView.php(149): yii\grid\GridView->renderItems()
+#9 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\GridView.php(264): yii\widgets\BaseListView->renderSection('{items}')
+#10 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\widgets\BaseListView.php(126): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\widgets\BaseListView.php(129): preg_replace_callback('/{\w+}/', Object(Closure), '{summary}?{item...')
+#13 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\grid\GridView.php(239): yii\widgets\BaseListView->run()
+#14 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Widget.php(96): yii\grid\GridView->run()
+#15 D:\xampp\htdocs\enter\project\webdev\advanced\backend\views\user\index.php(93): yii\base\Widget::widget(Array)
+#16 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(325): require('D:\xampp\htdocs...')
+#17 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\xampp\htdocs...', Array)
+#18 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\xampp\htdocs...', Array, Object(backend\controllers\UserController))
+#19 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('index', Array, Object(backend\controllers\UserController))
+#20 D:\xampp\htdocs\enter\project\webdev\advanced\backend\controllers\UserController.php(44): yii\base\Controller->render('index', Array)
+#21 [internal function]: backend\controllers\UserController->actionIndex()
+#22 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#23 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#24 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('', Array)
+#25 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user', Array)
+#26 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 D:\xampp\htdocs\enter\project\webdev\advanced\admin\index.php(18): yii\base\Application->run()
+#28 {main}
+2015-03-13 19:51:55 [::1][-][-][info][application] $_COOKIE = [
+    'ci_session' => 'a:9:{s:10:\"session_id\";s:32:\"96881ccd08bac0fd71ba93c61aa0a301\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:101:\"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36\";s:13:\"last_activity\";i:1426248982;s:9:\"user_data\";s:0:\"\";s:12:\"id_pertemuan\";s:2:\"46\";s:8:\"kelompok\";s:14:\"Web Programmer\";s:5:\"waktu\";i:1426248989;s:19:\"mempunyai_pertemuan\";b:1;}2a2d60fc468713fcbb839edc5731aeb32c77e476'
+    'session_frontend' => 'gjhbj0lqmmkh67bn4u4lr5r5p7'
+    '_csrf' => '686e37c2f552e34236a815d4c3f3bdb1c76b5beafb2118515db65e5f955cc107s:32:\"BIzFN6qWFQ_EcsGysxQxg78-jnTGe-Uo\";'
+    'session_backend' => 'p746bq029o88i1stldo9huisj0'
+    '_identity' => '7e9476bff06d88ee0dcfcf83f7dde81cb50060a2e1eaa95b49d5f560e96241b3s:67:\"[\"14250470322110131041\",\"gIpU0kxzdisoyCU6lmQdq7TdEAmIKpa7\",2592000]\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/enter/project/webdev/advanced/admin/departemen'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,ms;q=0.6,id;q=0.4'
+    'HTTP_COOKIE' => 'ci_session=a%3A9%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%2296881ccd08bac0fd71ba93c61aa0a301%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A101%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F39.0.2171.95+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1426248982%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3Bs%3A12%3A%22id_pertemuan%22%3Bs%3A2%3A%2246%22%3Bs%3A8%3A%22kelompok%22%3Bs%3A14%3A%22Web+Programmer%22%3Bs%3A5%3A%22waktu%22%3Bi%3A1426248989%3Bs%3A19%3A%22mempunyai_pertemuan%22%3Bb%3A1%3B%7D2a2d60fc468713fcbb839edc5731aeb32c77e476; session_frontend=gjhbj0lqmmkh67bn4u4lr5r5p7; _csrf=686e37c2f552e34236a815d4c3f3bdb1c76b5beafb2118515db65e5f955cc107s%3A32%3A%22BIzFN6qWFQ_EcsGysxQxg78-jnTGe-Uo%22%3B; session_backend=p746bq029o88i1stldo9huisj0; _identity=7e9476bff06d88ee0dcfcf83f7dde81cb50060a2e1eaa95b49d5f560e96241b3s%3A67%3A%22%5B%2214250470322110131041%22%2C%22gIpU0kxzdisoyCU6lmQdq7TdEAmIKpa7%22%2C2592000%5D%22%3B'
+    'PATH' => 'D:\\oracle\\product\\10.2.0\\db_1\\bin;C:\\Program Files\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Intel\\iCLS Client\\;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Broadcom\\Broadcom 802.11 Network Adapter\\Driver;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\Lenovo\\Bluetooth Software\\;D:\\xampp\\php;C:\\ProgramData\\Composer\\bin;C:\\Program Files\\Git\\cmd;D:\\android\\android-sdk\\sdk\\tools\\;D:\\android\\android-sdk\\android-ndk-r10d\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;D:\\android\\sqlite;C:\\Program Files\\Microsoft SQL Server\\100\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\100\\DTS\\Binn\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.6 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.6'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/enter/project/webdev/advanced/admin/index.php'
+    'REMOTE_PORT' => '50636'
+    'REDIRECT_URL' => '/enter/project/webdev/advanced/admin/user'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/enter/project/webdev/advanced/admin/user'
+    'SCRIPT_NAME' => '/enter/project/webdev/advanced/admin/index.php'
+    'PHP_SELF' => '/enter/project/webdev/advanced/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1426251115.303
+    'REQUEST_TIME' => 1426251115
+]
+2015-03-13 19:53:05 [::1][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: common\models\User::name' in D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Component.php:143
+Stack trace:
+#0 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\db\BaseActiveRecord.php(247): yii\base\Component->__get('name')
+#1 D:\xampp\htdocs\enter\project\webdev\advanced\backend\views\user\view.php(9): yii\db\BaseActiveRecord->__get('name')
+#2 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(325): require('D:\xampp\htdocs...')
+#3 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\xampp\htdocs...', Array)
+#4 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\xampp\htdocs...', Array, Object(backend\controllers\UserController))
+#5 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('view', Array, Object(backend\controllers\UserController))
+#6 D:\xampp\htdocs\enter\project\webdev\advanced\backend\controllers\UserController.php(56): yii\base\Controller->render('view', Array)
+#7 [internal function]: backend\controllers\UserController->actionView('142504703221101...')
+#8 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#9 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#10 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('view', Array)
+#11 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('user/view', Array)
+#12 D:\xampp\htdocs\enter\project\webdev\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 D:\xampp\htdocs\enter\project\webdev\advanced\admin\index.php(18): yii\base\Application->run()
+#14 {main}
+2015-03-13 19:53:05 [::1][-][-][info][application] $_GET = [
+    'id' => '14250470322110131041'
+]
+
+$_COOKIE = [
+    'ci_session' => 'a:9:{s:10:\"session_id\";s:32:\"96881ccd08bac0fd71ba93c61aa0a301\";s:10:\"ip_address\";s:3:\"::1\";s:10:\"user_agent\";s:101:\"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36\";s:13:\"last_activity\";i:1426248982;s:9:\"user_data\";s:0:\"\";s:12:\"id_pertemuan\";s:2:\"46\";s:8:\"kelompok\";s:14:\"Web Programmer\";s:5:\"waktu\";i:1426248989;s:19:\"mempunyai_pertemuan\";b:1;}2a2d60fc468713fcbb839edc5731aeb32c77e476'
+    'session_frontend' => 'gjhbj0lqmmkh67bn4u4lr5r5p7'
+    '_csrf' => '686e37c2f552e34236a815d4c3f3bdb1c76b5beafb2118515db65e5f955cc107s:32:\"BIzFN6qWFQ_EcsGysxQxg78-jnTGe-Uo\";'
+    'session_backend' => 'p746bq029o88i1stldo9huisj0'
+    '_identity' => '7e9476bff06d88ee0dcfcf83f7dde81cb50060a2e1eaa95b49d5f560e96241b3s:67:\"[\"14250470322110131041\",\"gIpU0kxzdisoyCU6lmQdq7TdEAmIKpa7\",2592000]\";'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'D:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'D:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
+    'HTTP_REFERER' => 'http://localhost/enter/project/webdev/advanced/admin/user'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,ms;q=0.6,id;q=0.4'
+    'HTTP_COOKIE' => 'ci_session=a%3A9%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%2296881ccd08bac0fd71ba93c61aa0a301%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A3%3A%22%3A%3A1%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A101%3A%22Mozilla%2F5.0+%28Windows+NT+6.1%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F39.0.2171.95+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1426248982%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3Bs%3A12%3A%22id_pertemuan%22%3Bs%3A2%3A%2246%22%3Bs%3A8%3A%22kelompok%22%3Bs%3A14%3A%22Web+Programmer%22%3Bs%3A5%3A%22waktu%22%3Bi%3A1426248989%3Bs%3A19%3A%22mempunyai_pertemuan%22%3Bb%3A1%3B%7D2a2d60fc468713fcbb839edc5731aeb32c77e476; session_frontend=gjhbj0lqmmkh67bn4u4lr5r5p7; _csrf=686e37c2f552e34236a815d4c3f3bdb1c76b5beafb2118515db65e5f955cc107s%3A32%3A%22BIzFN6qWFQ_EcsGysxQxg78-jnTGe-Uo%22%3B; session_backend=p746bq029o88i1stldo9huisj0; _identity=7e9476bff06d88ee0dcfcf83f7dde81cb50060a2e1eaa95b49d5f560e96241b3s%3A67%3A%22%5B%2214250470322110131041%22%2C%22gIpU0kxzdisoyCU6lmQdq7TdEAmIKpa7%22%2C2592000%5D%22%3B'
+    'PATH' => 'D:\\oracle\\product\\10.2.0\\db_1\\bin;C:\\Program Files\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Intel\\iCLS Client\\;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Broadcom\\Broadcom 802.11 Network Adapter\\Driver;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\Lenovo\\Bluetooth Software\\;D:\\xampp\\php;C:\\ProgramData\\Composer\\bin;C:\\Program Files\\Git\\cmd;D:\\android\\android-sdk\\sdk\\tools\\;D:\\android\\android-sdk\\android-ndk-r10d\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;D:\\android\\sqlite;C:\\Program Files\\Microsoft SQL Server\\100\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\100\\DTS\\Binn\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.6 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.7 (Win32) OpenSSL/1.0.1e PHP/5.5.6'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'D:/xampp/htdocs/enter/project/webdev/advanced/admin/index.php'
+    'REMOTE_PORT' => '50651'
+    'REDIRECT_QUERY_STRING' => 'id=14250470322110131041'
+    'REDIRECT_URL' => '/enter/project/webdev/advanced/admin/user/view'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=14250470322110131041'
+    'REQUEST_URI' => '/enter/project/webdev/advanced/admin/user/view?id=14250470322110131041'
+    'SCRIPT_NAME' => '/enter/project/webdev/advanced/admin/index.php'
+    'PHP_SELF' => '/enter/project/webdev/advanced/admin/index.php'
+    'REQUEST_TIME_FLOAT' => 1426251185.058
+    'REQUEST_TIME' => 1426251185
+]

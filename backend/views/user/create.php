@@ -27,7 +27,7 @@ $this->title = 'Create User';
 	<hr></hr>
     <?php $form = ActiveForm::begin(['id' => 'form-register']); ?>
 
-				<?= $form->field($model, 'name') ?>
+				<?= $form->field($model, 'nama') ?>
 				<?= $form->field($model, 'nrp') ?>
 				<label>Departemen</label><br>
 				<?= Html::activeDropDownList($model, 'departemen',
