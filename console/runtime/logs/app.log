@@ -1,0 +1,100 @@
+2015-02-08 02:30:53 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'yii2advanced'' in D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php:579
+Stack trace:
+#0 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(579): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(529): yii\db\Connection->createPdoInstance()
+#2 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#3 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#4 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#5 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#6 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(350): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#8 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\MigrateController.php(126): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#11 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(607): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#12 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(99): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#13 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#14 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#15 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#16 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('', Array)
+#17 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('', Array)
+#18 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('migrate', Array)
+#19 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migrate', Array)
+#20 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\yii(31): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [1049] Unknown database 'yii2advanced'' in D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php:534
+Stack trace:
+#0 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(836): yii\db\Connection->open()
+#1 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Connection.php(823): yii\db\Connection->getMasterPdo()
+#2 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(208): yii\db\Connection->getSlavePdo()
+#3 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(815): yii\db\Command->prepare(true)
+#4 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Command.php(350): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\mysql\Schema.php(198): yii\db\Command->queryAll()
+#6 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\mysql\Schema.php(97): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\db\Schema.php(139): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\MigrateController.php(126): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#9 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(607): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#10 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(99): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#11 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#12 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#13 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#14 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Controller.php(91): yii\base\Controller->runAction('', Array)
+#15 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Module.php(455): yii\console\Controller->runAction('', Array)
+#16 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Application.php(161): yii\base\Module->runAction('migrate', Array)
+#17 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\console\Application.php(137): yii\console\Application->runAction('migrate', Array)
+#18 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\vendor\yiisoft\yii2\base\Application.php(375): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 D:\xampp\htdocs\enter\resource\framework\php\yii-advanced\advanced\yii(31): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2015-02-08 02:30:52 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\rahmatheruka\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'RAHMATHERUKA-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\rahmatheruka'
+    'LOCALAPPDATA' => 'C:\\Users\\rahmatheruka\\AppData\\Local'
+    'LOGONSERVER' => '\\\\RAHMATHERUKA-PC'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Intel\\iCLS Client\\;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files\\Broadcom\\Broadcom 802.11 Network Adapter\\Driver;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files\\Lenovo\\Bluetooth Software\\;D:\\xampp\\php;C:\\ProgramData\\Composer\\bin;C:\\Program Files\\Git\\cmd;D:\\android\\android-sdk\\sdk\\tools\\;D:\\android\\android-sdk\\android-ndk-r10d\\;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;C:\\Program Files\\Intel\\OpenCL SDK\\2.0\\bin\\x86;D:\\android\\sqlite;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_IDENTIFIER' => 'x86 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\RAHMAT~1\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\RAHMAT~1\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'rahmatheruka-PC'
+    'USERNAME' => 'rahmatheruka'
+    'USERPROFILE' => 'C:\\Users\\rahmatheruka'
+    'VBOX_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\'
+    'PHP_SELF' => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\yii'
+    'SCRIPT_NAME' => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\yii'
+    'SCRIPT_FILENAME' => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\yii'
+    'PATH_TRANSLATED' => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1423359052.4891
+    'REQUEST_TIME' => 1423359052
+    'argv' => [
+        0 => 'D:\\xampp\\htdocs\\enter\\resource\\framework\\php\\yii-advanced\\advanced\\yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]

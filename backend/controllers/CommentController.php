@@ -8,7 +8,7 @@ use common\models\CommentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+date_default_timezone_set('Asia/Jakarta');
 /**
  * CommentController implements the CRUD actions for Comment model.
  */

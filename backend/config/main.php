@@ -7,13 +7,16 @@ $params = array_merge(
 );
 
 return [
-	'homeUrl' => '/enter/resource/framework/php/advanced/admin',
+	'homeUrl' => '/enter/project/webdev/advanced/admin',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+		'session' => [
+            'name' => 'session_backend',
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -35,7 +38,7 @@ return [
 			'showScriptName' => false,
 		],
 		'request' => [
-			'baseUrl' => '/enter/resource/framework/php/advanced/admin',
+			'baseUrl' => '/enter/project/webdev/advanced/admin',
 		],
     ],
     'params' => $params,

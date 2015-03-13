@@ -3,18 +3,21 @@ namespace backend\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
-use common\models\LoginForm;
+use backend\models\LoginForm;
+use backend\component\GxController;
 use yii\filters\VerbFilter;
-
+use yii\web\Controller;
 /**
  * Site controller
  */
+ date_default_timezone_set('Asia/Jakarta');
 class SiteController extends Controller
 {
     /**
      * @inheritdoc
      */
+	 
+	public $layout = "//main_login";
     public function behaviors()
     {
         return [
@@ -22,20 +25,20 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
-                        'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'dashboard'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
                     ],
                 ],
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    
                 ],
             ],
         ];
@@ -52,9 +55,15 @@ class SiteController extends Controller
             ],
         ];
     }
-
+	
     public function actionIndex()
     {
+		$this->redirect(Yii::$app->request->baseUrl . "/site/dashboard");
+    }
+	
+	public function actionDashboard()
+    {
+		$this->layout = "//main";
         return $this->render('index');
     }
 

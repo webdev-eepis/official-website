@@ -4,11 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\User;
-use yii\data\ActiveDataProvider;
+use common\models\UserSearch;
+use backend\models\CreateUserForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+date_default_timezone_set('Asia/Jakarta');
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -21,6 +22,8 @@ class UserController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'accept' => ['post'],
+                    'reject' => ['post'],
                 ],
             ],
         ];
@@ -32,18 +35,18 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
-        ]);
-
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+		$dataProvider->pagination->pageSize=10;
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
      * Displays a single User model.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -60,21 +63,24 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $model = new CreateUserForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if($model->load(Yii::$app->request->post())) {
+			if($model->signup()){
+				return $this->redirect(['view', 'id' => $model->id]);
+			}else{
+				return $this->render('create', ['model' => $model,]);
+			}
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->render('create', ['model' => $model,]);
         }
     }
-
+	
+	
     /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -89,11 +95,48 @@ class UserController extends Controller
             ]);
         }
     }
-
+	
+	public function actionAccept($id)
+	{
+		$model = $this->findModel($id);
+		$model->status_legal = 1;
+		$model->status_user = 0;
+		$model->save();
+		Yii::$app->mailer->compose(['html' => 'acceptMember-html'], ['user' => $model])
+            ->setFrom([Yii::$app->params['supportEmail'] => "WEBDEV EEPIS Community"])
+            ->setTo($model->email)
+            ->setSubject('Congratulation! WEBDEV EEPIS Community Accept you to become Member')
+			->attach("http://localhost/enter/project/webdev/advanced/assets/mail/formkartumember.docx")
+            ->send();
+		return $this->redirect(['view', 'id' => $model->id]);
+	}
+	public function actionReject($id)
+	{
+		$this->findModel($id)->delete();
+        return $this->redirect(['index']);
+	}
+	public function actionBecomeadmin($id){
+		$model = $this->findModel($id);
+		$model->status_user = 1;
+		$model->save();
+		return $this->redirect(['view', 'id'=>$model->id]);
+	}
+	public function actionRemoveadmin($id){
+		$model = $this->findModel($id);
+		$model->status_user = 0;
+		$model->save();
+		return $this->redirect(['view', 'id'=>$model->id]);
+	}
+	public function actionBecomesuperadmin($id){
+		$model = $this->findModel($id);
+		$model->status_user = 2;
+		$model->save();
+		return $this->redirect(['view', 'id'=>$model->id]);
+	}
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -106,7 +149,7 @@ class UserController extends Controller
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $id
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

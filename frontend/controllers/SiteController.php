@@ -1,8 +1,7 @@
 <?php
 namespace frontend\controllers;
-
+use yii\helpers\Url;
 use Yii;
-use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -21,33 +20,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+    
 
     /**
      * @inheritdoc
@@ -67,42 +40,21 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-		$posts = \common\models\Post::find()
-		 ->where(['status' => 1])
-		 ->orderBy('id DESC')
-		 ->limit(3)
-		 ->all();
-		$categories = \common\models\Category::find()
-		 ->orderBy('name ASC')
-		 ->all();
-        return $this->render('index', [
-			'posts' => $posts,
-			'categories' => $categories,
-		 ]);
+		Url::remember();
+		$quote = \common\models\quote::find()
+				->all();
+		$post = \common\models\Post::find()
+				->where(['status'=>1])
+				->orderby('id DESC')
+				->limit(3)
+				->all();
+        return $this->render('index',[
+			'posts'=>$post,
+			'quotes'=>$quote,
+		]);
     }
 
-    public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
+    
 
     public function actionContact()
     {
@@ -124,23 +76,14 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        return $this->render('../about');
-    }
-
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
+		Url::remember();
+		$member = \common\models\User::find()
+				->where(['status_legal'=>1])
+				->orderby('status_user DESC')
+				->all();
+        return $this->render('about',[
+			'members' => $member,
+		]);
     }
 
     public function actionRequestPasswordReset()
@@ -180,62 +123,5 @@ class SiteController extends Controller
         ]);
     }
 	
-	public function actionPostCategory($id)
-	{
-		$posts = \common\models\Post::find()
-		->where(['status' => 1, 'category_id' => $id])
-		->orderBy('id DESC')
-		->limit(5)
-		->all();
-		$categories = \common\models\Category::find()
-		->orderBy('name ASC')
-		->all();
-		return $this->render('postCategory', [
-		'posts' => $posts,
-		'categories' => $categories,
-		]);
-	}
-	public function actionPostSingle($id)
-	{
-		$model = new \common\models\Comment();
-		
-		if ($model->load(Yii::$app->request->post())) {
-			
-			$model->post_id=$id;
-			$model->status=0;
-			$model->create_time=time();
-			if (!Yii::$app->user->isGuest){
-				$model->author=Yii::$app->user->identity->username;
-				$model->email=Yii::$app->user->identity->email;
-				$model->status=1;
-			}
-			 
-			if ($model->validate()) {
-				if($model->save()){
-					if($model->status==1){
-						Yii::$app->session->setFlash('success', 'Comment saved,');
-					}
-					else{
-						Yii::$app->session->setFlash('success', 'Comment saved, waiting moderation');
-					}
-				}
-			}
-		}
-		$post = \common\models\Post::find()
-			->where(['status' => 1, 'id' => $id])
-			->one();
-		$categories = \common\models\Category::find()
-			->orderBy('name ASC')
-			->all();
-		$comments = \common\models\Comment::find()
-			->where(['status' => 1,'post_id'=>$id])
-			->orderBy('id DESC')
-			->all();
-		return $this->render('postSingle', [
-			'post' => $post,
-			'categories' => $categories,
-			'comments' => $comments,
-			'model' => $model,
-		]);
-	}
+	
 }

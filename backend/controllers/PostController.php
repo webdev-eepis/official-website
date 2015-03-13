@@ -8,7 +8,7 @@ use common\models\PostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+date_default_timezone_set('Asia/Jakarta');
 /**
  * PostController implements the CRUD actions for Post model.
  */
@@ -39,8 +39,6 @@ class PostController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-		
-		//print_r(Yii::$app->request->queryParams);
     }
 
     /**
@@ -64,8 +62,10 @@ class PostController extends Controller
     {
         $model = new Post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+			$model->user_id = Yii::$app->user->id;
+			if($model->save())
+				return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -91,7 +91,13 @@ class PostController extends Controller
             ]);
         }
     }
-
+	public function actionUpdatestatus($id, $status)
+	{
+		$model = $this->findModel($id);
+		$model->status = $status;
+		$model->save();
+		return $this->redirect(['view', 'id' => $model->id]);
+	}
     /**
      * Deletes an existing Post model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

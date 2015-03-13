@@ -1,71 +1,77 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+use common\models\Post;
+//$this->title = 'WEBDEV EEPIS - Community';
 ?>
 <div class="site-index">
-
-    <div class="row">
-		<div class="col-lg-9">
-			<?php
-			foreach($posts as $post){
-			echo '<div>';
-			echo '<h2>'.$post->title.'</h2>';
-			echo '<p>'.substr($post->content,0,300).'...</p>';
-			echo '<p><small>Posted by '.$post->user->username.' at '.date('F j, Y, g:i a',$post->create_time).'</small></p>';
-			echo '<p><a class="btn btn-default" href="http://localhost/enter/resource/framework/php/advanced/site/post-single?id='.$post->id.'">readmore &amp;raquo;</a></p>';
-			echo '</div>';
-			}
-			?>
+	
+    <div id="slider">
+		<div class="flexslider">
+		  <ul class="slides">
+			<li><img src="#"></li>
+			<li><img src="#"></li>
+			<li><img src="#"></li>
+		  </ul>
 		</div>
-		<div class="col-lg-3">
-			<h2>Category</h2>
-			<?php
-			use yii\bootstrap\Nav;
-			$items=[];
-			foreach($categories as $category){
-			$items[]=['label' => $category->name , 'url' => 'http://localhost/enter/resource/framework/php/advanced/site/post-single?id='.$category->id];
-			}
-			echo Nav::widget([
-			'items' => $items,
-			]);
-			?>
+		
+	</div>
+    
+	<div id="blog-side">
+		<div class="container">
+			<div class="title-side"><strong>ARTIKEL</strong> TERBARU</div>
+			<div class="row">
+				<?php
+				
+				foreach($posts as $post){				
+					$cari_gambar = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->konten, $matches);
+					if($cari_gambar){
+						$img = $matches [1][0];
+					}else{
+						$img = 'http://www.balaniinfotech.com/wp-content/themes/balani/images/noimage.jpg';
+					}
+				?>
+				<div class="col-md-4">
+					<a href="<?= Yii::$app->homeUrl."/blog/post/$post->id-".Post::slugString($post->judul); ?>">
+					<div class="thumb"><img src="<?= $img ?>" width="100%"></div>
+					<div class="title"><?= $post->judul ?></div>
+					</a>
+					<div class="time">
+					by 
+						<?php
+							if($post->alias==0){
+								$user = User::find()->where(['id'=>$post->user_id])->one();
+								echo $user->name;
+							}else{
+								echo "Administrator";
+							}
+						?>
+						<?= " - ".date('M d, Y', $post->created_at); ?>
+					</div>
+					<div class="content">
+						<?= substr(strip_tags($post->konten),0,190).'...' ?>
+					</div>
+					
+				</div>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+	
+	<div id="quote-side">
+		<div class="container">
+			<div class="flexslider" id="flex2">
+			  <ul class="slides">
+					<?php foreach($quotes as $quote){ ?>
+					<li>
+						<blockquote>
+						  <p><?= $quote->content; ?></p>
+						  <footer><?= $quote->source; ?></footer>
+						</blockquote>
+					</li>
+					<?php } ?>
+			  </ul>
+			</div>
+		</div>
+	</div>
 </div>
+

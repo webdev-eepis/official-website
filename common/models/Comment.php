@@ -8,29 +8,15 @@ use Yii;
  * This is the model class for table "comment".
  *
  * @property integer $id
- * @property string $content
- * @property integer $status
- * @property integer $create_time
- * @property string $author
+ * @property string $nama
  * @property string $email
- * @property string $url
+ * @property string $konten
+ * @property integer $created_at
+ * @property integer $status
  * @property integer $post_id
- *
- * @property Post $post
  */
 class Comment extends \yii\db\ActiveRecord
 {
-	public function behaviors()
-	{
-		return [
-			'timestamp' => [
-				'class' => \yii\behaviors\TimestampBehavior::className(),
-				'attributes' => [
-					\yii\db\ActiveRecord::EVENT_BEFORE_INSERT => ['create_time'],
-				],
-			],
-		];
-	}
     /**
      * @inheritdoc
      */
@@ -45,10 +31,10 @@ class Comment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'status', 'author', 'email', 'post_id'], 'required'],
-            [['content'], 'string'],
-            [['status', 'create_time', 'post_id'], 'integer'],
-            [['author', 'email', 'url'], 'string', 'max' => 128]
+            [['nama', 'email', 'konten', 'created_at', 'status', 'post_id'], 'required'],
+            [['konten'], 'string'],
+            [['created_at', 'status', 'post_id'], 'integer'],
+            [['nama', 'email'], 'string', 'max' => 255]
         ];
     }
 
@@ -59,21 +45,12 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Content',
-            'status' => 'Status',
-            'create_time' => 'Create Time',
-            'author' => 'Author',
+            'nama' => 'Nama',
             'email' => 'Email',
-            'url' => 'Url',
+            'konten' => 'Konten',
+            'created_at' => 'Created At',
+            'status' => 'Status',
             'post_id' => 'Post ID',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getPost()
-    {
-        return $this->hasOne(Post::className(), ['id' => 'post_id']);
     }
 }

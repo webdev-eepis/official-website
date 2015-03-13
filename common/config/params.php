@@ -1,7 +1,6 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
+    'supportEmail' => 'rahmatheruka@gmail.com',
     'user.passwordResetTokenExpire' => 3600,
-	'frontendUrl' => 'http://localhost/enter/resource/framework/php/advanced/frontendurl',
+	'frontendUrl' => 'http://localhost/enter/project/webdev/advanced/frontendurl',
 ];

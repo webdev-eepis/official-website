@@ -24,7 +24,7 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_ACTIVE = 1;
 
     /**
      * @inheritdoc
@@ -47,20 +47,36 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function rules()
+    /*public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status_legal', 'default', 'value' => self::STATUS_DELETED],
+            ['status_legal', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }*/
+	public function attributeLabels()
+    {
+        return [
+            'status_legal' => 'Status',
         ];
     }
-
+	
+	
+	public function getDepartemen()
+    {
+        return $this->hasOne(Departemen::className(), ['id' => 'departemen_id']);
+    }
+	public function getPortofolio()
+    {
+        return $this->hasOne(Portofolio::className(), ['user_id' => 'id']);
+    }
+	
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status_legal' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -77,9 +93,26 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $username
      * @return static|null
      */
-    public static function findByUsername($username)
+	public static function findUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username]);
+    }
+	
+	public static function findAdmin($username)
+    {
+		$sql = "SELECT * FROM user where username='$username' AND (status_user=1 OR status_user=2)";
+		//$customers = Customer::findBySql($sql)->all();
+        return static::findBySql($sql)->one();
+        //return static::findOne(['username' => $username, 'status_user'=>1]);
+    }
+	public static function findSuperAdmin($username)
+    {
+        return static::findOne(['username' => $username, 'status_user'=>2]);
+    }
+	
+    public static function findMember($username)
+    {
+        return static::findOne(['username' => $username, 'status_legal' => 1]);
     }
 
     /**
@@ -96,7 +129,7 @@ class User extends ActiveRecord implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status_legal' => self::STATUS_ACTIVE,
         ]);
     }
 
@@ -124,7 +157,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->getPrimaryKey();
     }
-
+	
     /**
      * @inheritdoc
      */
@@ -165,6 +198,13 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Generates "remember me" authentication key
      */
+	public function generateId()
+	{
+		$time = time();
+		$nrp = $this->nrp;
+		$this->id = $time.$nrp;
+	}	
+	 
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();

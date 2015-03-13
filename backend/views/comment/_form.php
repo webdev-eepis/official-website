@@ -12,17 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'nama')->textInput(['maxlength' => 255]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
+
+    <?= $form->field($model, 'konten')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'created_at')->textInput() ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'create_time')->textInput() ?>
-
-    <?= $form->field($model, 'author')->textInput(['maxlength' => 128]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => 128]) ?>
-
-    <?= $form->field($model, 'url')->textInput(['maxlength' => 128]) ?>
 
     <?= $form->field($model, 'post_id')->textInput() ?>
 
